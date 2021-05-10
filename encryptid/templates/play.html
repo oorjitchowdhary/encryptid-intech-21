@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | Play</title>{% endblock %}{% block header %}
+<h4>Hey, <span style="color: #16e16e;">{{ name }}</span></h4>
+{% endblock %}{% block content %}
+<p>You've completed {{ completed_levels }} level(s) and your score is {{ user_points }} points.<br/>
+  Check out the <a href="{{ url_for('leaderboard.leaderboard') }}" style="text-decoration: none;">leaderboard</a> to keep up with the game.</p>
+<div class="row">
+  <div style="padding: 0;">
+    <div class="six columns">
+      <div class="card">
+        <h4>Level {{ level }} · {{ points }} Points</h4>
+        <p style="margin-bottom: 18px; word-wrap: break-word">{{ question |safe }}</p>
+        <div class="row">
+          <div class="eight columns">
+            <input class="u-full-width" type="text" placeholder="Answer" name="answer" id="answer" required/>
+          </div>
+          <div class="four columns">
+            <button class="button-primary" type="submit" id="submit" onclick="handleSubmit()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- {{ hint }} -->
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='play.js') }}"></script>
+{% endblock %}

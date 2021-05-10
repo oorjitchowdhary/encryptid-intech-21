@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | User</title>{% endblock %}
+{% block header %}
+<h4>{{ player.name }}</h4>
+{% endblock %}
+{% block content %}
+<div class="player">
+    <p>
+        Email: {{ player.id }}<br/>
+        Level: {{ player.current_level }}<br/>
+        Points: {{ player.points }}<br/>
+        Last correct answer: {{ player.last_answer | readable }}<br/>
+        Banned: {{ player.banned }}<br/>
+        Admin: {{ player.admin }}<br/>
+    </p>
+    <button class="button button-primary u-pull-left" onclick="ban()">Ban</button><br/>
+</div>
+<div class="leaderboard">
+    <table class="u-full-width">
+        <thead>
+            <tr>
+                <td>Time</td>
+                <td>Level</td>
+                <td>Answer</td>
+                <td>IP</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.time | readable }}</td>
+                <td>{{ log.level }}</td>
+                <td>{{ log.text }}</td>
+                <td>{{ log.ip }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    const baseUrl = window.location.origin
+    const email = "{{ player.id }}"
+    const endpoint = `${baseUrl}/admin/ban?player=${email}`
+
+    const ban = async () => {
+      await fetch(endpoint, {
+        method: "GET"
+      })
+        .then((response) => response.json())
+        .then((data) => {
+            window.location.reload();
+            console.log(data.message)
+        })
+        .catch((err) => console.log(err));
+    };
+  </script>
+{% endblock %}

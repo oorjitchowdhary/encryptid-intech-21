@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | Admin</title>{% endblock %}
+{% block header %}
+<h4>Admin panel</h4>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="six columns">
+        <div class="user">
+            <h5>Logs</h5>
+            <p>
+                View logs for the all the users.
+            </p>
+            <a class="button button-primary" href="{{ url_for('admin.logs') }}">Logs</a>
+        </div>
+    </div>
+    <div class="six columns">
+        <div class="user">
+            <h5>Users</h5>
+            <p>
+                View the profiles of all the registered users.
+            </p>
+            <a class="button button-primary" href="{{ url_for('admin.users') }}">Users</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="six columns">
+        <div class="user">
+            <h5>Levels</h5>
+            <p>
+                View all the levels added to the database.
+            </p>
+            <a class="button button-primary" href="{{ url_for('admin.levels') }}">Levels</a>
+        </div>
+    </div>
+    <div class="six columns">
+        <div class="user">
+            <h5>Add level</h5>
+            <p>
+                Add a level to the database by submitting this form.
+            </p>
+            <a class="button button-primary" href="{{ url_for('admin.add_level') }}">Add level</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

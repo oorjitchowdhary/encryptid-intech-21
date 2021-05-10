@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | Add Level</title>{% endblock %}
+{% block header %}
+<h4>Add a level</h4>
+{% endblock %}
+{% block content %}
+<div class="add-level">
+    <form method='POST' action="/admin/levels/add"  novalidate onsubmit="toast()">
+        <input class="u-full-width" type="number" placeholder="Level number" name="number"/>
+        <input class="u-full-width" type="text" placeholder="Question" name="question"/>
+        <input class="u-full-width" type="text" placeholder="Answer" name="answer"/>
+        <input class="u-full-width" type="number" placeholder="Points" name="points"/>
+        <input class="u-full-width" type="text" placeholder="Hint" name="hint"/>
+        <button class="button button-primary" type="submit">Submit</button>
+    </form>
+</div>
+<script>
+  const notyf = new Notyf({ position: { x: "right", y: "top" } });
+  const toast = () => notyf.success('Level added successfully.');
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | Users</title>{% endblock %}
+{% block header %}
+<h4>Users</h4>
+{% endblock %}
+{% block content %}
+<div class="users">
+    {% for user in users %}
+    <div class="row">
+        <div class="six columns">
+            <div class="user">
+                <h5>{{ user[0].name }}</h5>
+                <p>
+                    {{ user[0].id }}<br/>
+                    Level {{ user[0].current_level }} | {{ user[0].points }} Points<br/>
+                    Last answered correctly: {{ user[0].last_answer | readable }}
+                </p>
+                <a href="/admin/user?player={{user[0].id}}" class="button">Logs</a>
+                {% if user[0].banned %}
+                    <button class="button button-primary" onclick="handleBan('{{ user[0].id }}')">Unban</button>
+                {% else %}
+                    <button class="button" style="background: red; border-color: red; color: #fff;" onclick="handleBan('{{ user[0].id }}')">Ban</button>
+                {% endif %}
+            </div>
+        </div>
+        {% if user|length == 2 %}
+        <div class="six columns">
+            <div class="user">
+                <h5>{{ user[1].name }}</h5>
+                <p>
+                    {{ user[1].id }}<br/>
+                    Level {{ user[1].current_level }} | {{ user[1].points }} Points<br/>
+                    Last answered correctly: {{ user[1].last_answer | readable }}
+                </p>
+                <a href="/admin/user?player={{user[1].id}}" class="button">Logs</a>
+                {% if user[1].banned %}
+                    <button class="button button-primary" onclick="handleBan('{{ user[1].id }}')">Unban</button>
+                {% else %}
+                    <button class="button" style="background: red; border-color: red; color: #fff;" onclick="handleBan('{{ user[1].id }}')">Ban</button>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+<script>
+    const notyf = new Notyf({ position: { x: 'right', y: 'top' } });
+    const handleBan = async (uid) => {
+        await fetch(`/admin/ban/?player=${uid}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.banned) {
+                notyf.error(data.message);
+                setTimeout(() => window.location.reload(), 1100);
+            } else {
+                notyf.success(data.message);
+                setTimeout(() => window.location.reload(), 1100);
+            }
+        })
+        .catch(err => console.log(err));
+    }
+</script>
+{% endblock %}

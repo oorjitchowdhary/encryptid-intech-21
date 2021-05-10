@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block title %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/tech_syndicate.png') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <div id="navbar" class="topnav">
+      <a href="{{ url_for('index') }}" id="logo"><img class="logo" src="{{ url_for('static', filename='assets/ts.png') }}"></a>
+      {% if current_user.is_authenticated %}<a href="{{ url_for('auth.logout') }}">Log out</a>{% endif %}
+      <a href="{{ url_for('play.play') }}">Play</a>
+      <a href="{{ url_for('leaderboard.leaderboard') }}">Leaderboard</a>
+      {% if current_user.admin %}<a href="{{ url_for('admin.index') }}">Admin</a>{% endif %}
+      <a href="javascript:void(0);" class="icon" onclick="responsive()"><i class="fa fa-bars"></i></a>
+    </div>
+    <div class="container">
+      {% block header %}{% endblock %}
+      <div class="heading-hr"><hr/></div>
+      {% block content %} {% endblock %}
+    </div>
+    <footer>
+      <hr/>
+      <p class="footer-text">inTech '21 · Tech Syndicate</p>
+    </footer>
+    <script>
+      responsive = () => {
+       let nav = document.getElementById("navbar");
+       if (nav.className === "topnav") {
+         nav.className += " responsive";
+       } else {
+         nav.className = "topnav";
+       }
+     }
+   </script>
+  </body>
+</html>

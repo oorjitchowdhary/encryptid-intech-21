@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | inTech '21</title>{% endblock %}
+{% block header %}
+<h4 style="text-align: center; font-size: 60px; color: #28a745;">Encryptid</h4>
+<h4 style="text-align: center;margin-top: -10px;" id="timings">8th May 00:00 IST to 9th May 23:59 IST</h4>
+{% if current_user.is_authenticated %}
+{% else %}
+    <div class="auth-buttons">
+        <a id="inline-button" class="button amity-button" href="{{ ms_endpoint }}"><img class="school-logo" src="{{ url_for('static', filename='assets/ais.png') }}">login with amity.edu</a>
+        <a id="inline-button" class="button discord-button" href="{{ discord_endpoint }}"><img class="discord-logo" src="{{ url_for('static', filename='assets/discord.png') }}">login with discord</a>
+    </div>
+{% endif %}
+{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="left">
+        <h4 style="font-size: 40px; color: #28a745;">Guidelines</h4>
+        <ul style="margin-left: 22px;" id="guidelines">
+            <li>There are 10 levels in total progressively increasing in difficulty.</li>
+            <li>If you're from Grade XII or not from AIS-46, you may login with Discord. For everyone else, it is mandatory to use your school email to login.</li>
+            <li>Lead confirmations will be on at specific timings which will be iterated on the discord server.</li>
+            <li>The number of tries to enter an answer is unlimited; therefore, don't hesitate to try out any value which you think is the answer.</li>
+            <li>There is no specified answer format: a string "Foo Bar" or "foobar" will be interpreted the same way.</li>
+            <li>We have a zero-tolerance policy for cheating, and anyone found doing so will be disqualified immediately.</li>
+        </ul>
+    </div>
+    <div class="right">
+        <a id="landing-button" class="button button-primary" href="https://intech.techsyndicate.co/server">Discord</a><br><br>
+        <a id="landing-button" class="button button-primary" target="_blank" href="https://techsyndicate.co/resources/cryptic">&nbsp;&nbsp;Learn&nbsp;&nbsp;</a><br><br>
+    </div>
+</div>
+
+<script>
+    const notyf = new Notyf({ position: { x: "right", y: "top" } });
+    if (window.location.search) {
+        notyf.error("Please login to view that page.");
+    }
+</script>
+{% endblock %}

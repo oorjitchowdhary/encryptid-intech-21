@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block header %}
+{% block title %}<title>Encryptid | Leaderboard</title>{% endblock %}
+<h4>Leaderboard</h4>
+{% endblock %}
+{% block content %}
+<div class="leaderboard">
+  <h5>Non-competitive</h5>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Username</td>
+        <td>Points</td>
+      </tr>
+    </thead>
+    <tbody id="nc-count">
+      {% for player in lb_nc %}
+      <tr>
+        <td>{{ lb_nc.index(player) + 1 }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.points }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h5>Competitive</h5>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Username</td>
+        <td>Points</td>
+      </tr>
+    </thead>
+    <tbody id="count">
+      {% for player in lb %}
+      <tr>
+        <td>{{ lb.index(player) + 1 }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.points }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

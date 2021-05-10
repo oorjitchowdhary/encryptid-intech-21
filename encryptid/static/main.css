@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Lexend Deca";
+}
+
+hr {
+  margin: 8px;
+}
+
+.container {
+  margin-bottom: 42px;
+}
+
+/* navbar */
+.topnav {
+  overflow: hidden;
+  display: block;
+  background-color: #000;
+  width: 100%;
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.logo {
+  padding: 0;
+  margin: 5px 16px;
+  max-height: 50px;
+  float: left;
+}
+
+#logo {
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+#logo:hover {
+  background-color: #000;
+}
+
+/* base styles */
+.heading-hr {
+  margin: 20px 0;
+}
+
+/* leaderboard */
+.leaderboard {
+  padding: 40px;
+}
+
+.leaderboard table {
+  text-align: center;
+  margin-bottom: 5%;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
+  font-weight: unset;
+}
+
+.leaderboard table tbody tr td,
+.leaderboard table thead tr td {
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard table tr:nth-child(even) {
+  color: #fff;
+  background-color: #333;
+}
+
+.leaderboard table thead tr {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: #28a745;
+  padding: 12px 0;
+}
+
+/* play */
+.card {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  padding: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+}
+
+footer hr {
+  background-color: #1d1d1d;
+  margin: 0;
+}
+
+.footer-text {
+  color: #ddd;
+  text-align: center;
+  padding: 12px;
+  margin: 0;
+}
+
+/* admin */
+.user {
+  padding: 20px;
+  border: 1px solid #1d1d1d;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.user h5 {
+  margin: 0;
+}
+
+.user p {
+  word-wrap: break-word;
+}
+
+/* image */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* index */
+.school-logo {
+  height: 30px;
+  width: 35px;
+  margin-left: -5px;
+  margin-right: 10px;
+}
+
+.discord-logo {
+  height: 35px;
+  width: 35px;
+  margin-left: -5px;
+  margin-right: 10px;
+}
+
+#inline-button {
+  height: 45px;
+  width: 260px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: 200px;
+}
+
+.amity-button {
+  background-color: rgb(41,59,143);
+  color: #fff;
+  border: none;
+}
+
+.amity-button:hover {
+  background-color: rgba(41, 60, 143, 0.616);
+  color: #fff;
+  border: none;
+}
+
+.discord-button {
+  background-color: #7289d9;
+  color: #fff;
+  border: none;
+}
+
+.discord-button:hover {
+  background-color: #7288d9de;
+  color: #fff;
+  border: none;
+}
+
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.left {
+  width: 800px;
+}
+
+.right {
+  width: 100px;
+  margin-top: -300px;
+}
+
+#landing-button {
+  position: absolute;
+  right: 0;
+}
+
+#timings {
+  font-size: 25px;
+}
+
+#guidelines {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .auth-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-left: 50px;
+  }
+
+  #timings {
+    font-size: 20px;
+  }
+
+  #guidelines {
+    font-size: 17px;
+  }
+
+  .right {
+    margin-top: 0px;
+    margin-bottom: 110px;
+  }
+
+  #landing-button {
+    width: 85%;
+    position: absolute;
+    right: 25px;
+  }
+}

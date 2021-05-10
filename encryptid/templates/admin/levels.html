@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | Levels</title>{% endblock %}
+{% block header %}
+<h4>Levels</h4>
+{% endblock %}
+{% block content %}
+<div class="levels">
+    {% for level in levels %}
+    <div class="row">
+        <div class="six columns">
+            <div class="user">
+                <h5>Level {{ level[0].id }}</h5>
+                <p>
+                    {{ level[0].question }}<hr/>
+                    {{ level[0].hint }}<br/>
+                    Answer: <span style="color: #16e16e;">{{ level[0].answer }}</span>
+                </p>
+            </div>
+        </div>
+        {% if level|length == 2 %}
+        <div class="six columns">
+            <div class="user">
+                <h5>Level {{ level[1].id }}</h5>
+                <p>
+                    {{ level[1].question }}<hr/>
+                    {{ level[1].hint }}<br/>
+                    Answer: <span style="color: #16e16e;">{{ level[1].answer }}</span>
+                </p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

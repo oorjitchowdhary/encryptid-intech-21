@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}<title>Encryptid | Logs</title>{% endblock %}
+{% block header %}
+<h4>Logs</h4>
+{% endblock %}
+{% block content %}
+<div class="leaderboard">
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <td>Time</td>
+                    <td>User</td>
+                    <td>Level</td>
+                    <td>Answer</td>
+                    <td>IP</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.time | readable }}</td>
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.level }}</td>
+                    <td>{{ log.text }}</td>
+                    <td>{{ log.ip }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}
